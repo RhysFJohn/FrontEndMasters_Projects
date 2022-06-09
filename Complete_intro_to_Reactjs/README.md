@@ -1,0 +1,1 @@
+<img src="https://static.frontendmasters.com/assets/fm/med/core/frontendmasters-dark.png">
