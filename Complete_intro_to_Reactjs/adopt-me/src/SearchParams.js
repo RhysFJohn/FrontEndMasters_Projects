@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
 import Pet from "./Pet";
+import useBreedList from "./useBreedList";
 
 const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
 
 const SearchParams = () => {
-  const [location, setLocation] = useState("");
-  const [animal, setAnimal] = useState("");
-  const [breed, setBreed] = useState("");
-  const breeds = [];
+  const [location, updateLocation] = useState("");
+  const [animal, updateAnimal] = useState("");
+  const [breed, updateBreed] = useState("");
   const [pets, setPets] = useState([]);
+  const [breeds] = useBreedList(animal);
 
   useEffect(() => {
     requestPets();
@@ -25,14 +26,19 @@ const SearchParams = () => {
 
   return (
     <div className="search-params">
-      <form>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          requestPets();
+        }}
+      >
         <label htmlFor="location">
-          Location {location}
+          Location
           <input
             id="location"
             value={location}
-            placeholder="location"
-            onChange={(e) => setLocation(e.target.value)}
+            placeholder="Location"
+            onChange={(e) => updateLocation(e.target.value)}
           />
         </label>
         <label htmlFor="animal">
@@ -41,12 +47,12 @@ const SearchParams = () => {
             id="animal"
             value={animal}
             onChange={(e) => {
-              setAnimal(e.target.value);
-              setBreed("");
+              updateAnimal(e.target.value);
+              updateBreed("");
             }}
             onBlur={(e) => {
-              setAnimal(e.target.value);
-              setBreed("");
+              updateAnimal(e.target.value);
+              updateBreed("");
             }}
           >
             <option />
@@ -60,13 +66,14 @@ const SearchParams = () => {
         <label htmlFor="breed">
           Breed
           <select
+            disabled={!breeds.length}
             id="breed"
             value={breed}
             onChange={(e) => {
-              setBreed(e.target.value);
+              updateBreed(e.target.value);
             }}
             onBlur={(e) => {
-              setBreed(e.target.value);
+              updateBreed(e.target.value);
             }}
           >
             <option />
