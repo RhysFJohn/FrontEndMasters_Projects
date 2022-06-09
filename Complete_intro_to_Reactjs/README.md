@@ -4,8 +4,8 @@
 
 <p>This is project is from the Complete Intro to React V7 course on Front End masters</p>
 
-<ul>
-  <h3>To set up and run this project</h3>
-  <li>`npm install`</li>
-  <li>`npm run dev`</li>
-</ul>
+## To set up and run this project
+
+- `npm install`
+- `npm run dev`
+
