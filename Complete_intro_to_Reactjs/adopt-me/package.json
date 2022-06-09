@@ -6,7 +6,9 @@
     "dev": "parcel src/index.html",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "format:check": "prettier --check \"src/**/*.{js,jsx}\"",
-    "lint": "eslint \"src/**/*.{js,jsx}\" --quiet"
+    "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
+    "build": "npx parcel build src/index.html",
+    "serve:dist": "npx serve dist"
   },
   "keywords": [],
   "author": "",
